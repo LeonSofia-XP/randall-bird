@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Color.hpp>
+#include <iostream>
+
 
 struct mov{
  float y;
@@ -35,8 +37,9 @@ int main()
    while (f.pollEvent(cerrar)){
     if (cerrar.type == sf::Event::Closed)
       f.close();
+   }
+ 
 
-  }
   jugador.yv +=  jugador.ya;
   jugador.y += jugador.yv;
 
@@ -44,20 +47,15 @@ int main()
     jugador.yv = - 0.5f;
   }
 
-  if (jugador.y < 140){
-    player.setPosition(50, 140);
 
-}
+  player.setPosition(50, jugador.y);
+  if (jugador.y < 200){
+    player.setPosition(50, 600);
 
-
-
-  player.setPosition(50,jugador.y);
+   }
 
   f.clear(sf::Color::Yellow);
   f.draw(player);
   f.display();
  }
-
- return 0;
- }
-
+}
