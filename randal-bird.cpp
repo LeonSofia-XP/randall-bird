@@ -33,29 +33,27 @@ int main()
   jugador.ya = gravedad;
 
   while (f.isOpen()){
-   sf::Event cerrar;
-   while (f.pollEvent(cerrar)){
-    if (cerrar.type == sf::Event::Closed)
+   sf::Event ev;
+   while (f.pollEvent(ev)){
+    if (ev.type == sf::Event::Closed)
       f.close();
+     if (ev.key.code == sf::Keyboard::Space && jugador.y >= 500){
+    jugador.yv = - 0.9f;
+
    }
- 
+
 
   jugador.yv +=  jugador.ya;
   jugador.y += jugador.yv;
 
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-    jugador.yv = - 0.5f;
-  }
-
 
   player.setPosition(50, jugador.y);
-  if (jugador.y < 200){
-    player.setPosition(50, 600);
 
-   }
 
   f.clear(sf::Color::Yellow);
   f.draw(player);
   f.display();
+
+  }
  }
 }
