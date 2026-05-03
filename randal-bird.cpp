@@ -51,11 +51,6 @@ int main()
     jugador.yv =-1.f;
   }
 
-  if(jugador.y = 500|| jugador.y = 100){
-    jugador.y = 150;
-    f.draw(go);
-  }
-
 
   jugador.yv +=  jugador.ya;
   jugador.y += jugador.yv;
@@ -66,6 +61,12 @@ int main()
 
   f.clear(sf::Color::Yellow);
   f.draw(player);
+
+  if(jugador.y >= 600 || jugador.y <= 0){
+    jugador.y = 150;
+    f.draw(go);
+  }
+
   f.display();
 
   }
