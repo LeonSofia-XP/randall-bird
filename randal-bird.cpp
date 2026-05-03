@@ -23,7 +23,7 @@ int main()
   player.setScale(0.2f, 0.2f);
 
 
-  const float gravedad = 0.2f;
+  const float gravedad = 0.1f;
 
   mov jugador;
   jugador.y = player.getPosition().y;
@@ -42,8 +42,9 @@ int main()
   jugador.y += jugador.yv;
 
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-    jugador.yv = -10.f;
+    jugador.yv = -30.f;
 
+  player.setPosition(50,jugador.y);
 
   f.clear(sf::Color::Yellow);
   f.draw(player);
