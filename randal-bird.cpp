@@ -23,7 +23,7 @@ int main()
   player.setScale(0.2f, 0.2f);
 
 
-  const float gravedad = 0.1f;
+  const float gravedad = 0.01f;
 
   mov jugador;
   jugador.y = player.getPosition().y;
@@ -37,11 +37,11 @@ int main()
       f.close();
 
   }
-
+  jugador.yv +=  jugador.ya;
   jugador.y += jugador.yv;
 
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-    jugador.yv = -10.f;
+    jugador.yv = - 0.5f;
   }
 
   if (jugador.y < 140){
