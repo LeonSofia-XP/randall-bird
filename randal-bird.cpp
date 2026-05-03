@@ -25,6 +25,14 @@ int main()
   player.setScale(0.2f, 0.2f);
 
 
+  sf::Font Letra;
+  if(!Letra.loadFromFile("LuckiestGuy-Regular.ttf")){
+  return 1;
+  }
+  sf::Text go("¡PERDISTE! XD", Letra, 20);
+   go.setFillColor(sf::Color::White);
+   go.setPosition(60, 200);
+
   const float gravedad = 0.01f;
 
   mov jugador;
@@ -37,10 +45,16 @@ int main()
    while (f.pollEvent(ev)){
     if (ev.type == sf::Event::Closed)
       f.close();
-     if (ev.key.code == sf::Keyboard::Space && jugador.y >= 500){
-    jugador.yv = - 0.9f;
-
    }
+
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+    jugador.yv =-1.f;
+  }
+
+  if(jugador.y = 500|| jugador.y = 100){
+    jugador.y = 150;
+    f.draw(go);
+  }
 
 
   jugador.yv +=  jugador.ya;
@@ -56,4 +70,5 @@ int main()
 
   }
  }
-}
+
+
