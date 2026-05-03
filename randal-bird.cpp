@@ -27,7 +27,7 @@ int main()
 
   mov jugador;
   jugador.y = player.getPosition().y;
-  jugador.yv = 0.0f;
+  jugador.yv = 0.3f;
   jugador.ya = gravedad;
 
   while (f.isOpen()){
@@ -38,11 +38,18 @@ int main()
 
   }
 
-  jugador.yv += jugador.ya;
   jugador.y += jugador.yv;
 
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-    jugador.yv = -30.f;
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+    jugador.yv = -10.f;
+  }
+
+  if (jugador.y < 140){
+    player.setPosition(50, 140);
+
+}
+
+
 
   player.setPosition(50,jugador.y);
 
