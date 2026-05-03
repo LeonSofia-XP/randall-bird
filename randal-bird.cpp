@@ -47,6 +47,11 @@ int main()
       f.close();
    }
 
+
+  if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+     jugador.y = 150;
+  }
+
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
     jugador.yv =-1.f;
   }
@@ -60,12 +65,24 @@ int main()
 
 
   f.clear(sf::Color::Yellow);
-  f.draw(player);
+
+  bool gameover;
 
   if(jugador.y >= 600 || jugador.y <= 0){
-    jugador.y = 150;
-    f.draw(go);
+  gameover = true;
   }
+
+  else{
+  gameover = false;
+  }
+
+  if(gameover == true){
+   f.draw(go);
+  }
+   else{
+   f.draw(player);
+  }
+
 
   f.display();
 
