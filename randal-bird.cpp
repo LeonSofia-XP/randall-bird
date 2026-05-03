@@ -6,7 +6,7 @@ struct mov{
  float yv;
  float ya;
 
-}
+};
 
 
 int main()
@@ -19,16 +19,16 @@ int main()
   rand.loadFromFile("player.jpg");
   sf::Sprite player;
   player.setTexture(rand);
-  player.setPosition(50, 150),
+  player.setPosition(50, 150);
   player.setScale(0.2f, 0.2f);
 
 
-  const float gravedad;
+  const float gravedad = 0.2f;
 
-  mov player;
-  player.y = player.getPosition().y;
-  player.yv = 0.0f;
-  player.ya = gravedad;
+  mov jugador;
+  jugador.y = player.getPosition().y;
+  jugador.yv = 0.0f;
+  jugador.ya = gravedad;
 
   while (f.isOpen()){
    sf::Event cerrar;
@@ -38,11 +38,11 @@ int main()
 
   }
 
-  player.yv += player.ya;
-  player.y += player.yv;
+  jugador.yv += jugador.ya;
+  jugador.y += jugador.yv;
 
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-    player.yv = -10.f;
+    jugador.yv = -10.f;
 
 
   f.clear(sf::Color::Yellow);
