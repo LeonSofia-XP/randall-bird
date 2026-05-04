@@ -1,3 +1,4 @@
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Color.hpp>
 #include <iostream>
@@ -40,6 +41,9 @@ int main()
   jugador.yv = 0.3f;
   jugador.ya = gravedad;
 
+  bool gameover = false;
+
+
   while (f.isOpen()){
    sf::Event ev;
    while (f.pollEvent(ev)){
@@ -47,42 +51,30 @@ int main()
       f.close();
    }
 
-
-  if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-     jugador.y = 150;
+  if(!gameover && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+    jugador.yv = -1.f;
   }
 
-  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-    jugador.yv =-1.f;
-  }
-
-
+  if(!gameover){
   jugador.yv +=  jugador.ya;
   jugador.y += jugador.yv;
+  }
 
+  if(jugador.y >= 600 || jugador.y <= 0){
+  gameover = true;
+  }
 
   player.setPosition(50, jugador.y);
 
 
   f.clear(sf::Color::Yellow);
 
-  bool gameover;
-
-  if(jugador.y >= 600 || jugador.y <= 0){
-  gameover = true;
+  if(gameover){
+  f.draw(go);
   }
-
   else{
-  gameover = false;
+  f.draw(player);
   }
-
-  if(gameover == true){
-   f.draw(go);
-  }
-   else{
-   f.draw(player);
-  }
-
 
   f.display();
 
