@@ -1,6 +1,15 @@
-
+}
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Color.hpp>
+
+ void reinicio (mov &jugador, sf::Sprite &player, bool &gameover){
+    player.setPosition(50, 150);
+    jugador.y = player.getPosition().y;
+    jugador.vy = 0.0f;
+    gameover = false;
+  }
+
+
 
 struct mov{
  float y;
@@ -74,12 +83,6 @@ int main()
   f.draw(player);
   }
 
-  void reinicio (mov &jugador, sf::Sprite &player, bool &gameover){
-    player.setPosition(50, 150);
-    jugador.y = player.getPosition().y;
-    jugador.vy = 0.0f;
-    gameover = false;
-  }
 
  if(gameover && sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
    reinicio(jugador, player, gameover);
