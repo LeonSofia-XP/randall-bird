@@ -43,7 +43,6 @@ int main()
 
   bool gameover = false;
 
-
   while (f.isOpen()){
    sf::Event ev;
    while (f.pollEvent(ev)){
@@ -76,7 +75,9 @@ int main()
   f.draw(player);
   }
 
+
   f.display();
+
 
   }
  }
